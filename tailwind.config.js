@@ -8,12 +8,12 @@ module.exports = {
 		extend: {
 			keyframes: {
 				slideOut: {
-					'0%': { transform: 'translateX(0)' },
+					'0%': {},
 					'100%': { transform: 'translateX(-223px)' },
 				},
 				slideIn: {
 					'0%': { transform: 'translateX(-223px)' },
-					'100%': { transform: 'translateX(0px)' },
+					'100%': {},
 				},
 			},
 			animation: {

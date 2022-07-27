@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto'
+import { supabaseAdmin } from '../pages/index'
 import Section from './Section'
 const data = {
 	Todo: [
@@ -97,24 +99,19 @@ const data = {
 			tags: [{ difficulty: 'Medium' }],
 		},
 	],
-	Untitled: [],
-	Untitled1: [],
-	Untitled2: [],
 }
+
 const TodoBoard = () => {
 	const sections = Object.entries(data)
 	return (
-		<div
-			style={{
-				display: 'grid',
-				gap: '.5rem',
-				gridTemplateColumns: `repeat(${sections.length}, minmax(0, 1fr))`,
-			}}
-			className="overflow-x-scroll"
-		>
+		<div className="flex md:flex-row sm:flex-col gap-[.5rem] p-4 overflow-x-scroll max-w-[95vw]">
 			{sections.map(([title, tasks], idx) => {
-				return <Section key={idx} title={title} tasks={tasks} />
+				return (
+					<Section key={Math.random()} title={title} tasks={tasks} />
+				)
 			})}
+			<Section key={Math.random()} title={'Untitled'} />
+			<Section key={Math.random()} title={'Untitled'} />
 		</div>
 	)
 }

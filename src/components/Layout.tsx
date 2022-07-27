@@ -20,14 +20,18 @@ const Layout = ({ children }: LayoutPropInterface) => {
 			{statusElement}
 			<div
 				id="fullscreen-modal-blur"
-				className={`${status !== 'idle' ? 'blur-sm' : ''}`}
+				className={`overflow-x-hidden ${
+					status !== 'idle' ? 'blur-sm' : ''
+				}`}
 			>
 				<Navbar />
 				<main
 					style={{
 						marginLeft: `${NAVBAR_WIDTH}px `,
 					}}
-					className={`p-2 ${handleClassName(navState)}`}
+					className={`flex w-[100vw] bg-transparent items-center justify-center p-2  overflow-x-hidden ${handleClassName(
+						navState
+					)}`}
 				>
 					{children}
 				</main>
@@ -40,7 +44,7 @@ const Layout = ({ children }: LayoutPropInterface) => {
 const ApplicationStatusElementProvider = (status: string): ReactNode => {
 	switch (status) {
 		case 'addTask':
-			return <AddTaskModal />
+			return <AddTaskModal sectionID={123} />
 		case 'loading':
 			return (
 				<div className="select-none overflow-hidden text-center justify-center text-white fixed top-0 bottom-0 left-0 right-0 bg-black z-50 opacity-80">
