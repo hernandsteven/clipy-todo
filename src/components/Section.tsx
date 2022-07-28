@@ -3,6 +3,7 @@ import TaskCard from './TaskCard'
 import { DotsHorizontalIcon, PlusCircleIcon } from '@heroicons/react/outline'
 import { useAppDispatch } from '../redux/app/hooks'
 import { setAddTask } from '../redux/reducers/globalSlice'
+
 interface SectionPropTypes {
 	title: string
 	icon?: string
