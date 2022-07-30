@@ -53,7 +53,7 @@ const Section: FC<SectionPropTypes> = ({ title, icon, tasks }) => {
 				) : (
 					<button
 						onClick={() => dispatch(setAddTask())}
-						className="flex flex-row gap-1 cursor-pointer bg-gray-50 hover:bg-gray-100 p-4 text-center justify-center items-center border-solid min-h-[100px] w-full rounded-md border-gray-500 border border-spacing-10"
+						className="whitespace-nowrap flex flex-row gap-1 cursor-pointer bg-gray-50 hover:bg-gray-100 p-4 text-center justify-center items-center border-solid min-h-[100px] w-full rounded-md border-gray-500 border border-spacing-10"
 					>
 						<PlusCircleIcon className="h-5 w-5 justify-self-end self-center cursor-pointer" />
 						<p>Add Task</p>
