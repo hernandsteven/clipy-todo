@@ -1,22 +1,11 @@
-import { createClient } from '@supabase/supabase-js'
-import type { NextPage } from 'next'
 import Head from 'next/head'
+import { ReactElement } from 'react'
 import ActionMenu from '../components/ActionMenu'
+import Layout from '../components/Layout'
 import TodoBoard from '../components/TodoBoard'
-/*
-export const supabaseAdmin = createClient(
-	process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-	process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY || ''
-)
+import { NextPageWithLayout } from './_app'
 
-const fetchTable = () => {
-	const data = supabaseAdmin.from('todo').select('*').order('id')
-	return data
-}
-*/
-
-//
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
 	return (
 		<>
 			<Head>
@@ -30,6 +19,10 @@ const Home: NextPage = () => {
 			</div>
 		</>
 	)
+}
+
+Home.getLayout = function getLayout(page: ReactElement) {
+	return <Layout>{page}</Layout>
 }
 
 export default Home
