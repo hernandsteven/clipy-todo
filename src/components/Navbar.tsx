@@ -13,7 +13,7 @@ import {
     BellIcon,
     CollectionIcon,
 } from '@heroicons/react/outline'
-import { supabase } from '../util/supaBaseClient'
+import { supabase } from '../util/supabaseClient'
 
 export const handleClassName = (navState: string) => {
     if (navState === 'collapsed') {

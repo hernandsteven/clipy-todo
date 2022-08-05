@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { supabase } from '../../util/supaBaseClient'
+import { supabase } from '../../util/supabaseClient'
 import { setSession } from '../../redux/reducers/globalSlice'
 import { useAppDispatch } from '../../redux/app/hooks'
 

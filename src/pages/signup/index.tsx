@@ -1,12 +1,11 @@
 import { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { supabase } from '../../util/supaBaseClient'
+import { supabase } from '../../util/supabaseClient'
 import { useRouter } from 'next/router'
 import { useAppDispatch } from '../../redux/app/hooks'
 import { useAppSelector } from '../../redux/app/hooks'
 import { setUser } from '../../redux/reducers/globalSlice'
-import { PaperClipIcon } from '@heroicons/react/outline'
 
 const SignUp: NextPage = () => {
     const dispatch = useAppDispatch()
@@ -25,6 +24,14 @@ const SignUp: NextPage = () => {
             provider: 'github',
         })
     }
+
+    useEffect(() => {
+        if (password.length >= 6 && passwordConfirmation === password) {
+            setButtonDisabled(false)
+        } else {
+            setButtonDisabled(true)
+        }
+    }, [password, passwordConfirmation])
 
     const signUpWithEmail = async () => {
         const { body, status } = await supabase
@@ -134,7 +141,7 @@ const SignUp: NextPage = () => {
                             }
                         />
                         <button
-                            className="rounded-md border-2 border-purple-600 bg-purple-400 p-2 text-white disabled:text-[#fff]"
+                            className="disabled:filter-grayscale-100 rounded-md border-2 border-purple-600 bg-purple-400 p-2 text-white"
                             type="submit"
                             disabled={buttonDisabled}
                         >
