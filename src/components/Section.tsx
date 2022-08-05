@@ -1,15 +1,14 @@
-import { FC, ReactNode, useState } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 import TaskCard from './TaskCard'
 import { DotsHorizontalIcon, PlusCircleIcon } from '@heroicons/react/outline'
 import { useAppDispatch, useAppSelector } from '../redux/app/hooks'
-import { setAddTask } from '../redux/reducers/globalSlice'
+import { setAddTask, setIdle } from '../redux/reducers/globalSlice'
 import {
     setCurrentSectionID,
     setCurrentSectionTitle,
 } from '../redux/reducers/todosSlice'
 import { supabase } from '../util/supabaseClient'
-import { useSetState } from 'react-use'
 
 interface SectionPropTypes {
     sectionID?: string | null | undefined
@@ -59,6 +58,12 @@ const Section: FC<SectionPropTypes> = ({ sectionID, title, icon, tasks }) => {
         }
     }
 
+    useEffect(() => {
+        if (!sectionID) {
+            setNewTitle('untitled')
+        }
+    }, [])
+
     return (
         <div id="section" className="flex min-h-screen flex-col">
             <div className="sticky top-0 mb-2 mt-2 flex w-full flex-row rounded-md pr-3 shadow-md">
@@ -73,7 +78,7 @@ const Section: FC<SectionPropTypes> = ({ sectionID, title, icon, tasks }) => {
                             handleTitleEnter(e.target.value)
                         }
                     }}
-                    value={sectionID ? newTitle : globalTitle}
+                    value={newTitle}
                 />
                 <div className="flex flex-row items-center justify-center gap-2">
                     <PlusCircleIcon className="h-5 w-5 cursor-pointer" />

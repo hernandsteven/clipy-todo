@@ -9,6 +9,7 @@ const KanbanBoard: FC<any> = () => {
     const globalTitle = useAppSelector(
         (state) => state.todos.currentSectionTitle
     )
+    const [randId, setRandId] = useState(uuid())
     const status = useAppSelector((state) => state.global.status)
     // Fetch sections from database
     useEffect(() => {
@@ -16,6 +17,7 @@ const KanbanBoard: FC<any> = () => {
         const user = supabase.auth.user()
         if (user) {
             getSections(user.id)
+            setRandId(uuid())
         }
     }, [status])
 
@@ -62,7 +64,7 @@ const KanbanBoard: FC<any> = () => {
                         )
                     }
                 )}
-            <Section sectionID={null} title={globalTitle} />
+            <Section key={randId} sectionID={null} title={globalTitle} />
         </div>
     )
 }
