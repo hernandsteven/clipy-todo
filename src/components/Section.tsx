@@ -60,7 +60,7 @@ const Section: FC<SectionPropTypes> = ({ sectionID, title, icon, tasks }) => {
     }
 
     return (
-        <div id="section" className="flex flex-col">
+        <div id="section" className="flex min-h-screen flex-col">
             <div className="sticky top-0 mb-2 mt-2 flex w-full flex-row rounded-md pr-3 shadow-md">
                 <input
                     className="flex flex-1 p-4 text-2xl font-bold"
